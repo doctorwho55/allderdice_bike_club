@@ -29,6 +29,7 @@ class RidesController < ApplicationController
   # POST /rides.json
   def create
     @ride = Ride.new(ride_params)
+    @ride.user = current_user
 
     respond_to do |format|
       if @ride.save
