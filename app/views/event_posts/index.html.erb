@@ -1,0 +1,35 @@
+<h1>Listing event_posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Event name</th>
+      <th>Event date time</th>
+      <th>Event description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_posts.each do |event_post| %>
+      <tr>
+        <td><%= event_post.user %></td>
+        <td><%= event_post.title %></td>
+        <td><%= event_post.author %></td>
+        <td><%= event_post.event_name %></td>
+        <td><%= event_post.event_date_time %></td>
+        <td><%= event_post.event_description %></td>
+        <td><%= link_to 'Show', event_post %></td>
+        <td><%= link_to 'Edit', edit_event_post_path(event_post) %></td>
+        <td><%= link_to 'Destroy', event_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event post', new_event_post_path %>
