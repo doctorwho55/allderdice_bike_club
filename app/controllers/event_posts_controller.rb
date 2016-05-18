@@ -29,6 +29,7 @@ class EventPostsController < ApplicationController
   # POST /event_posts.json
   def create
     @event_post = EventPost.new(event_post_params)
+    @event_post.user = current_user
 
     respond_to do |format|
       if @event_post.save
