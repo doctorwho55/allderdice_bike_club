@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'news/index'
+
   resources :rides do
   #->Prelang (voting/acts_as_votable)
   member do
