@@ -1,35 +1,44 @@
-<h1>Listing event_posts</h1>
-
-<table>
+<%- model_class = EventPost -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => EventPost %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Event name</th>
-      <th>Event date time</th>
-      <th>Event description</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:author) %></th>
+      <th><%= model_class.human_attribute_name(:event_name) %></th>
+      <th><%= model_class.human_attribute_name(:event_date_time) %></th>
+      <th><%= model_class.human_attribute_name(:event_description) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @event_posts.each do |event_post| %>
       <tr>
-        <td><%= event_post.user %></td>
+        <td><%= event_post.id %></td>
         <td><%= event_post.title %></td>
         <td><%= event_post.author %></td>
         <td><%= event_post.event_name %></td>
         <td><%= event_post.event_date_time %></td>
         <td><%= event_post.event_description %></td>
-        <td><%= link_to 'Show', event_post %></td>
-        <td><%= link_to 'Edit', edit_event_post_path(event_post) %></td>
-        <td><%= link_to 'Destroy', event_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l event_post.created_at, format: :long %></td>
+        <td>
+          <%= link_to event_post_path(event_post), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to event_post_path(event_post), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Event post', new_event_post_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_event_post_path,
+            :class => 'btn btn-primary' %>
