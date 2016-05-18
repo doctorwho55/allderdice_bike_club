@@ -1,49 +1,38 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Ride -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Ride %></h1>
+</div>
 
-<p>
-  <strong>Ride start time:</strong>
-  <%= @ride.ride_start_time %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:ride_start_time) %></dt>
+      <dd><pre class="prettyprint"><%= @ride.ride_start_time %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:ride_name) %></dt>
+      <dd><pre class="prettyprint"><%= @ride.ride_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:ride_distance) %></dt>
+      <dd><pre class="prettyprint"><%= @ride.ride_distance %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:ride_time) %></dt>
+      <dd><pre class="prettyprint"><%= @ride.ride_time %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:ride_speed_average) %></dt>
+      <dd><pre class="prettyprint"><%= @ride.ride_speed_average %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:ride_speed_max) %></dt>
+      <dd><pre class="prettyprint"><%= @ride.ride_speed_max %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:rider_username) %></dt>
+      <dd><pre class="prettyprint"><%= @ride.rider_username %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:ride_distance_climbed) %></dt>
+      <dd><pre class="prettyprint"><%= @ride.ride_distance_climbed %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Ride name:</strong>
-  <%= @ride.ride_name %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              rides_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_ride_path(@ride), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              ride_path(@ride),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Ride distance:</strong>
-  <%= @ride.ride_distance %>
-</p>
-
-<p>
-  <strong>Ride time:</strong>
-  <%= @ride.ride_time %>
-</p>
-
-<p>
-  <strong>Ride speed average:</strong>
-  <%= @ride.ride_speed_average %>
-</p>
-
-<p>
-  <strong>Ride speed max:</strong>
-  <%= @ride.ride_speed_max %>
-</p>
-
-<p>
-  <strong>Rider username:</strong>
-  <%= @ride.rider_username %>
-</p>
-
-<p>
-  <strong>Ride distance climbed:</strong>
-  <%= @ride.ride_distance_climbed %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @ride.user %>
-</p>
-
-<%= link_to 'Edit', edit_ride_path(@ride) %> |
-<%= link_to 'Back', rides_path %>

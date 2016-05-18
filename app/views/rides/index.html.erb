@@ -1,24 +1,27 @@
-<h1>Listing rides</h1>
-
-<table>
+<%- model_class = Ride -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Ride %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Ride start time</th>
-      <th>Ride name</th>
-      <th>Ride distance</th>
-      <th>Ride time</th>
-      <th>Ride speed average</th>
-      <th>Ride speed max</th>
-      <th>Rider username</th>
-      <th>Ride distance climbed</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:ride_start_time) %></th>
+      <th><%= model_class.human_attribute_name(:ride_name) %></th>
+      <th><%= model_class.human_attribute_name(:ride_distance) %></th>
+      <th><%= model_class.human_attribute_name(:ride_time) %></th>
+      <th><%= model_class.human_attribute_name(:ride_speed_average) %></th>
+      <th><%= model_class.human_attribute_name(:ride_speed_max) %></th>
+      <th><%= model_class.human_attribute_name(:rider_username) %></th>
+      <th><%= model_class.human_attribute_name(:ride_distance_climbed) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @rides.each do |ride| %>
       <tr>
+        <td><%= ride.id %></td>
         <td><%= ride.ride_start_time %></td>
         <td><%= ride.ride_name %></td>
         <td><%= ride.ride_distance %></td>
@@ -27,15 +30,21 @@
         <td><%= ride.ride_speed_max %></td>
         <td><%= ride.rider_username %></td>
         <td><%= ride.ride_distance_climbed %></td>
-        <td><%= ride.user %></td>
-        <td><%= link_to 'Show', ride %></td>
-        <td><%= link_to 'Edit', edit_ride_path(ride) %></td>
-        <td><%= link_to 'Destroy', ride, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l ride.created_at, format: :long %></td>
+        <td>
+          <%= link_to ride_path(ride), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to ride_path(ride), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Ride', new_ride_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_ride_path,
+            :class => 'btn btn-primary' %>

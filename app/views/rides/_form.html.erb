@@ -1,53 +1,58 @@
-<%= form_for(@ride) do |f| %>
-  <% if @ride.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ride.errors.count, "error") %> prohibited this ride from being saved:</h2>
-
-      <ul>
-      <% @ride.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @ride, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :ride_start_time, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.datetime_select :ride_start_time, :class => 'text-field form-control' %>
     </div>
-  <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ride_name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :ride_name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :ride_distance, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :ride_distance, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :ride_time, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.time_select :ride_time, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :ride_speed_average, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :ride_speed_average, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :ride_speed_max, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :ride_speed_max, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :rider_username, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :rider_username, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :ride_distance_climbed, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :ride_distance_climbed, :class => 'text-field form-control' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :ride_start_time %><br>
-    <%= f.datetime_select :ride_start_time %>
-  </div>
-  <div class="field">
-    <%= f.label :ride_name %><br>
-    <%= f.text_field :ride_name %>
-  </div>
-  <div class="field">
-    <%= f.label :ride_distance %><br>
-    <%= f.text_field :ride_distance %>
-  </div>
-  <div class="field">
-    <%= f.label :ride_time %><br>
-    <%= f.time_select :ride_time %>
-  </div>
-  <div class="field">
-    <%= f.label :ride_speed_average %><br>
-    <%= f.text_field :ride_speed_average %>
-  </div>
-  <div class="field">
-    <%= f.label :ride_speed_max %><br>
-    <%= f.text_field :ride_speed_max %>
-  </div>
-  <div class="field">
-    <%= f.label :rider_username %><br>
-    <%= f.text_field :rider_username %>
-  </div>
-  <div class="field">
-    <%= f.label :ride_distance_climbed %><br>
-    <%= f.text_field :ride_distance_climbed %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  rides_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
