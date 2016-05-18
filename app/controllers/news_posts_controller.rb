@@ -29,6 +29,7 @@ class NewsPostsController < ApplicationController
   # POST /news_posts.json
   def create
     @news_post = NewsPost.new(news_post_params)
+    @news_post.user = current_user
 
     respond_to do |format|
       if @news_post.save
