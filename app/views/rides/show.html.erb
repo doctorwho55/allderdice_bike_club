@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ride start time:</strong>
+  <%= @ride.ride_start_time %>
+</p>
+
+<p>
+  <strong>Ride name:</strong>
+  <%= @ride.ride_name %>
+</p>
+
+<p>
+  <strong>Ride distance:</strong>
+  <%= @ride.ride_distance %>
+</p>
+
+<p>
+  <strong>Ride time:</strong>
+  <%= @ride.ride_time %>
+</p>
+
+<p>
+  <strong>Ride speed average:</strong>
+  <%= @ride.ride_speed_average %>
+</p>
+
+<p>
+  <strong>Ride speed max:</strong>
+  <%= @ride.ride_speed_max %>
+</p>
+
+<p>
+  <strong>Rider username:</strong>
+  <%= @ride.rider_username %>
+</p>
+
+<p>
+  <strong>Ride distance climbed:</strong>
+  <%= @ride.ride_distance_climbed %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @ride.user %>
+</p>
+
+<%= link_to 'Edit', edit_ride_path(@ride) %> |
+<%= link_to 'Back', rides_path %>

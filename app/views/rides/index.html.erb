@@ -1,0 +1,41 @@
+<h1>Listing rides</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ride start time</th>
+      <th>Ride name</th>
+      <th>Ride distance</th>
+      <th>Ride time</th>
+      <th>Ride speed average</th>
+      <th>Ride speed max</th>
+      <th>Rider username</th>
+      <th>Ride distance climbed</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rides.each do |ride| %>
+      <tr>
+        <td><%= ride.ride_start_time %></td>
+        <td><%= ride.ride_name %></td>
+        <td><%= ride.ride_distance %></td>
+        <td><%= ride.ride_time %></td>
+        <td><%= ride.ride_speed_average %></td>
+        <td><%= ride.ride_speed_max %></td>
+        <td><%= ride.rider_username %></td>
+        <td><%= ride.ride_distance_climbed %></td>
+        <td><%= ride.user %></td>
+        <td><%= link_to 'Show', ride %></td>
+        <td><%= link_to 'Edit', edit_ride_path(ride) %></td>
+        <td><%= link_to 'Destroy', ride, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ride', new_ride_path %>
